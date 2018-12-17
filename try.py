@@ -3,6 +3,7 @@ import os
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
 import subprocess
+import time
 
 class MyForm(QtGui.QWidget):
     def __init__(self, parent=None):
@@ -34,7 +35,9 @@ class MyForm(QtGui.QWidget):
         message = "Enter a name for your video"
         video_name, ok = QtGui.QInputDialog.getText(parent_window, title, message)
         print video_name
-        os.system("mv out1.avi %s.avi"%video_name)
+	timestr = time.strftime("%Y%m%d-%H%M%S")
+	x = video_name + timestr
+        os.system("mv out1.avi %s.avi"%x)
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
